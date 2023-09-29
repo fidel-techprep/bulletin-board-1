@@ -1,4 +1,5 @@
 class BoardsController < ApplicationController
+  
   def index
     matching_boards = Board.all
 
