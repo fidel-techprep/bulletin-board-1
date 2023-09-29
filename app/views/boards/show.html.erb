@@ -42,7 +42,29 @@
     <th>Expires on</th>
   </tr>
 
-  <% @the_board.posts.order({ expires_on: :asc }).each do |a_post| %>
+  <% @the_board.active_posts.order({ expires_on: :asc }).each do |a_post| %>
+    <tr>
+      <td><%= a_post.title %></td>
+      <td><%= a_post.body %></td>
+      <td><%= a_post.created_at.strftime("%b %e, %Y") %></td>
+      <td><%= a_post.expires_on.strftime("%b %e, %Y") %></td>
+      
+    </tr>
+  <% end %>
+  
+</table>
+
+<h2>Expired posts</h2>
+
+<table border="1">
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Posted on</th>
+    <th>Expires on</th>
+  </tr>
+
+  <% @the_board.expired_posts.order({ expires_on: :asc }).each do |a_post| %>
     <tr>
       <td><%= a_post.title %></td>
       <td><%= a_post.body %></td>
